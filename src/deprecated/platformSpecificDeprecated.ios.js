@@ -68,8 +68,7 @@ function startTabBasedApp(params) {
         <TabBarControllerIOS
           id={controllerID + '_tabs'}
           style={params.tabsStyle}
-          appStyle={params.appStyle}
-          initialTabIndex={params.initialTabIndex}>
+          appStyle={params.appStyle}>
           {
             params.tabs.map(function(tab, index) {
               return (
@@ -131,6 +130,7 @@ function startSingleScreenApp(params) {
     navigatorEventID,
     navigatorID
   };
+  params.singleScreenApp = true;
 
   const Controller = Controllers.createClass({
     render: function() {
@@ -595,8 +595,8 @@ function savePassProps(params) {
     PropRegistry.save(params.navigationParams.screenInstanceID, params.passProps);
   }
 
-  if (params.screen && params.screen.passProps) {
-    PropRegistry.save(params.screen.navigationParams.screenInstanceID, params.screen.passProps);
+  if (params.singleScreenApp && params.screen && params.screen.passProps) {
+    PropRegistry.save(params.navigationParams.screenInstanceID, params.screen.passProps);
   }
 
   if (_.get(params, 'screen.topTabs')) {

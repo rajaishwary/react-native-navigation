@@ -79,8 +79,8 @@ function _registerComponentRedux(screenID, generator, store, Provider, options) 
 
       render() {
         return (
-          <Provider store={store} {...options}>
-            <InternalComponent testID={screenID} navigator={this.navigator} {...this.state.internalProps} />
+          <Provider store={store}>
+            <InternalComponent testID={screenID} db={options} navigator={this.navigator} {...this.state.internalProps} />
           </Provider>
         );
       }
